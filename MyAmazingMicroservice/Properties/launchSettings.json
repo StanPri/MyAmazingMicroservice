@@ -20,7 +20,7 @@
     "MyAmazingMicroservice": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/values",
+      "launchUrl": "api/blogging",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
