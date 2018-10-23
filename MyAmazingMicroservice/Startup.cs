@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MyAmazingMicroservice.Models;
 using Microsoft.EntityFrameworkCore;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace MyAmazingMicroservice
 {
@@ -31,6 +32,17 @@ namespace MyAmazingMicroservice
             var connection = @"Server=(localdb)\mssqllocaldb;Database=MyAmazingMicroserviceDb;Trusted_Connection=True;";
             services.AddDbContext<BloggingContext>
                 (options => options.UseSqlServer(connection));
+            services.AddSwaggerGen(options =>
+            {
+                options.DescribeAllEnumsAsStrings();
+                options.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info
+                {
+                    Title = "MyAmazingMicroservice - Blogging HTTP API",
+                    Version = "v1",
+                    Description = "The Blogging Microservice HTTP API. This is a Data-Driven/CRUD microservice sample",
+                    TermsOfService = "Terms Of Service"
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +56,16 @@ namespace MyAmazingMicroservice
             {
                 app.UseHsts();
             }
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
 
             app.UseHttpsRedirection();
             app.UseMvc();
