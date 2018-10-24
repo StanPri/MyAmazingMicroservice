@@ -21,6 +21,9 @@ In future, the following are going to be added
 
 'MyAmazingMicroservice' requires Visual Studio 2017 to run.
 Restore NuGet Packages and start 'MyAmazingMicroservice' project. 
+Open 'Command Prompt' in the repository folder and run
+ - 
+ -  'dotnet ef core update database' command
 
 ### NuGet Packages
 
@@ -28,7 +31,7 @@ Restore NuGet Packages and start 'MyAmazingMicroservice' project.
 
 | NuGet Package | Website |
 | ------ | ------ |
-| Swagger | https://www.nuget.org/packages/Swashbuckle/ |
+| Swagger | https://www.nuget.org/packages/Swashbuckle/ |s
 | Swagger ASPNet Core | https://www.nuget.org/packages/Swashbuckle.AspNetCore/ |
 
 
